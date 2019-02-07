@@ -1,0 +1,17 @@
+[
+  {
+    "modid": "simplekeycommand",
+    "name": "SimpleKeyCommand",
+    "description": "A simple mod that add key command function.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "tartaric_acid"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": []
+  }
+]
