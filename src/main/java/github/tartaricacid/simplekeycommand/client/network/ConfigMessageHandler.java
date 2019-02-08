@@ -1,7 +1,7 @@
 package github.tartaricacid.simplekeycommand.client.network;
 
-import github.tartaricacid.simplekeycommand.common.CommonProxy;
-import github.tartaricacid.simplekeycommand.common.network.ConfigDeserialization;
+import github.tartaricacid.simplekeycommand.common.config.ConfigDeserialization;
+import github.tartaricacid.simplekeycommand.common.config.ConfigInit;
 import github.tartaricacid.simplekeycommand.common.network.ConfigMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.TextComponentString;
@@ -30,7 +30,7 @@ public class ConfigMessageHandler implements IMessageHandler<ConfigMessage, IMes
         String configString = message.getConfigString();
         try {
             // 写入客户端配置文件
-            FileUtils.writeStringToFile(CommonProxy.configJsonFile, configString, StandardCharsets.UTF_8);
+            FileUtils.writeStringToFile(ConfigInit.configJsonFile, configString, StandardCharsets.UTF_8);
             // 客户端序列化
             ConfigDeserialization.deserialization();
             // 客户端更新语言文件

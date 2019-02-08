@@ -1,8 +1,8 @@
 package github.tartaricacid.simplekeycommand.client.event;
 
 import github.tartaricacid.simplekeycommand.SimpleKeyCommand;
-import github.tartaricacid.simplekeycommand.common.CommonProxy;
-import github.tartaricacid.simplekeycommand.common.network.ConfigPOJO;
+import github.tartaricacid.simplekeycommand.common.config.ConfigInit;
+import github.tartaricacid.simplekeycommand.common.config.ConfigPOJO;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -88,7 +88,7 @@ public class ClientKeyBinding {
     @SideOnly(Side.CLIENT)
     private static ConfigPOJO getKey(int index) {
         try {
-            return CommonProxy.configJson.get(index);
+            return ConfigInit.configJson.get(index);
         } catch (IndexOutOfBoundsException iobe) {
             return null;
         }
