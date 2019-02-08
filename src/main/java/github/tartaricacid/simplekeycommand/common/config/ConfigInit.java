@@ -64,10 +64,16 @@ public class ConfigInit {
         ConfigPOJO.Text text = configPOJO.new Text();
         ConfigPOJO.Sound sound = configPOJO.new Sound();
 
-        text.setPos(Arrays.asList(1.0d, 1.0d));
-        sound.setName("minecraft:ding");
+        text.setShow(false);
+        text.setHyphen(" -> ");
+        text.setColor(0xffffff);
+        text.setPos(Arrays.asList(1.0f, 1.0f));
+
+        sound.setPlay(true);
+        sound.setName("minecraft:entity.experience_orb.pickup");
         sound.setVolume(1.0f);
         sound.setPitch(1.0f);
+
         configPOJO.setCommand("这一块输入你需要触发的指令，支持 %player% 占位符");
         configPOJO.setDesc("你可以在此处写下你对键位的详细描述");
         configPOJO.setText(text);

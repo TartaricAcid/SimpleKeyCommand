@@ -78,6 +78,9 @@ public class ConfigPOJO implements Cloneable {
     }
 
     public class Sound {
+        @SerializedName("play")
+        private boolean play;
+
         @SerializedName("name")
         private String name;
 
@@ -110,21 +113,51 @@ public class ConfigPOJO implements Cloneable {
         public void setPitch(float pitch) {
             this.pitch = pitch;
         }
+
+        public boolean isPlay() {
+            return play;
+        }
+
+        public void setPlay(boolean play) {
+            this.play = play;
+        }
     }
 
     public class Text {
         @SerializedName("show")
         private boolean show;
 
-        @SerializedName("pos")
-        private List<Double> pos;
+        @SerializedName("hyphen")
+        private String hyphen;
 
-        public List<Double> getPos() {
+        @SerializedName("color")
+        private int color;
+
+        @SerializedName("pos")
+        private List<Float> pos;
+
+        public List<Float> getPos() {
             return pos;
         }
 
-        public void setPos(List<Double> pos) {
+        public void setPos(List<Float> pos) {
             this.pos = pos;
+        }
+
+        public int getColor() {
+            return color;
+        }
+
+        public void setColor(int color) {
+            this.color = color;
+        }
+
+        public String getHyphen() {
+            return hyphen;
+        }
+
+        public void setHyphen(String hyphen) {
+            this.hyphen = hyphen;
         }
 
         public boolean isShow() {

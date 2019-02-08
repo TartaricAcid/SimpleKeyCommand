@@ -1,5 +1,6 @@
 package github.tartaricacid.simplekeycommand.common.event;
 
+import github.tartaricacid.simplekeycommand.SimpleKeyCommand;
 import github.tartaricacid.simplekeycommand.common.config.ConfigInit;
 import github.tartaricacid.simplekeycommand.common.network.ConfigMessage;
 import github.tartaricacid.simplekeycommand.common.network.ConfigPackHandler;
@@ -16,7 +17,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = SimpleKeyCommand.MOD_ID)
 public class ServerLoginEvent {
     @SideOnly(Side.SERVER)
     @SubscribeEvent

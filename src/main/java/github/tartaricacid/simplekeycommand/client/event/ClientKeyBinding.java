@@ -5,6 +5,8 @@ import github.tartaricacid.simplekeycommand.common.config.ConfigInit;
 import github.tartaricacid.simplekeycommand.common.config.ConfigPOJO;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -31,7 +33,7 @@ public class ClientKeyBinding {
     private static KeyBinding number9 = new KeyBinding("key.simple_key_command.number9", Keyboard.KEY_NUMPAD9, "key.categories.simple_key_command");
 
     // 方便后面遍历的 List
-    private static List<KeyBinding> numberKeyList = Arrays.asList(number0, number1, number2, number3, number4, number5, number6, number7, number8, number9);
+    public static List<KeyBinding> numberKeyList = Arrays.asList(number0, number1, number2, number3, number4, number5, number6, number7, number8, number9);
 
     // 管控是否触发发送信息
     private static boolean isFire = true;
@@ -69,7 +71,13 @@ public class ClientKeyBinding {
                 // 获取对应的 ConfigPOJO 对象
                 ConfigPOJO key = getKey(i);
                 if (key != null) {
-                    // 占位符的替换
+                    // 声音的播放
+                    if (key.getSound().isPlay()) {
+                        SoundEvent soundEvent = new SoundEvent(new ResourceLocation(key.getSound().getName()));
+                        Minecraft.getMinecraft().player.playSound(soundEvent, key.getSound().getVolume(), key.getSound().getPitch());
+                    }
+
+                    // 占位符的替换，命令的发送
                     String command = key.getCommand().replaceAll("%player%", Minecraft.getMinecraft().player.getName());
                     Minecraft.getMinecraft().player.sendChatMessage(command);
                 }
@@ -86,7 +94,7 @@ public class ClientKeyBinding {
      */
     @Nullable
     @SideOnly(Side.CLIENT)
-    private static ConfigPOJO getKey(int index) {
+    static ConfigPOJO getKey(int index) {
         try {
             return ConfigInit.configJson.get(index);
         } catch (IndexOutOfBoundsException iobe) {
