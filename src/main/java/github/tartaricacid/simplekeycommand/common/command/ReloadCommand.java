@@ -1,6 +1,6 @@
 package github.tartaricacid.simplekeycommand.common.command;
 
-import github.tartaricacid.simplekeycommand.common.CommonProxy;
+import github.tartaricacid.simplekeycommand.common.config.ConfigInit;
 import github.tartaricacid.simplekeycommand.common.network.ConfigMessage;
 import github.tartaricacid.simplekeycommand.common.network.ConfigPackHandler;
 import net.minecraft.command.ICommand;
@@ -59,7 +59,7 @@ public class ReloadCommand implements ICommand {
         if (args.length != 0 && args[0].equals("reload")) {
             try {
                 // 将服务端配置文件读取成字符串
-                String configString = new String(Files.readAllBytes(Paths.get(CommonProxy.configJsonFile.getPath())), StandardCharsets.UTF_8);
+                String configString = new String(Files.readAllBytes(Paths.get(ConfigInit.configJsonFile.getPath())), StandardCharsets.UTF_8);
                 // 而后发送到服务器所有玩家客户端处
                 ConfigPackHandler.INSTANCE.sendToAll(new ConfigMessage(configString));
                 sender.sendMessage(new TextComponentString("config file reload success!"));

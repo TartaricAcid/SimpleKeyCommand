@@ -1,6 +1,6 @@
 package github.tartaricacid.simplekeycommand.common.event;
 
-import github.tartaricacid.simplekeycommand.common.CommonProxy;
+import github.tartaricacid.simplekeycommand.common.config.ConfigInit;
 import github.tartaricacid.simplekeycommand.common.network.ConfigMessage;
 import github.tartaricacid.simplekeycommand.common.network.ConfigPackHandler;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -23,7 +23,7 @@ public class ServerLoginEvent {
     public static void serverLoginEvent(PlayerEvent.PlayerLoggedInEvent event) {
         try {
             // 将配置文件读取成字符串
-            String configString = new String(Files.readAllBytes(Paths.get(CommonProxy.configJsonFile.getPath())), StandardCharsets.UTF_8);
+            String configString = new String(Files.readAllBytes(Paths.get(ConfigInit.configJsonFile.getPath())), StandardCharsets.UTF_8);
             // 向登陆的指定玩家发包
             ConfigPackHandler.INSTANCE.sendTo(new ConfigMessage(configString), (EntityPlayerMP) event.player);
         } catch (IOException ioe) {
