@@ -3,7 +3,7 @@ package github.tartaricacid.simplekeycommand.common.command;
 import github.tartaricacid.simplekeycommand.common.config.ConfigInit;
 import github.tartaricacid.simplekeycommand.common.network.ConfigMessage;
 import github.tartaricacid.simplekeycommand.common.network.ConfigPackHandler;
-import net.minecraft.command.ICommand;
+import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ReloadCommand implements ICommand {
+public class ReloadCommand extends CommandBase {
     @Override
     public String getName() {
         return "simplekeycommand";
@@ -44,16 +44,6 @@ public class ReloadCommand implements ICommand {
     }
 
     @Override
-    public boolean isUsernameIndex(String[] args, int index) {
-        return false;
-    }
-
-    @Override
-    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
-        return true;
-    }
-
-    @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
         // 参数为 reload 时
         if (args.length != 0 && args[0].equals("reload")) {
@@ -67,12 +57,7 @@ public class ReloadCommand implements ICommand {
                 sender.sendMessage(new TextComponentString("config file reload failed!"));
             }
         } else {
-            sender.sendMessage(new TextComponentString("/skc <reload>"));
+            sender.sendMessage(new TextComponentString(this.getUsage(sender)));
         }
-    }
-
-    @Override
-    public int compareTo(ICommand o) {
-        return 0;
     }
 }

@@ -29,6 +29,4 @@ public class CommonProxy {
     public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new ReloadCommand());
     }
-
-
 }

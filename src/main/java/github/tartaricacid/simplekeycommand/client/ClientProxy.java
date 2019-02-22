@@ -1,8 +1,10 @@
 package github.tartaricacid.simplekeycommand.client;
 
+import github.tartaricacid.simplekeycommand.client.command.URLCommand;
 import github.tartaricacid.simplekeycommand.client.event.ClientKeyBinding;
 import github.tartaricacid.simplekeycommand.client.network.ConfigLanguageUpdate;
 import github.tartaricacid.simplekeycommand.common.CommonProxy;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -19,6 +21,8 @@ public class ClientProxy extends CommonProxy {
         super.init(event);
         ClientKeyBinding clientKeyBinding = new ClientKeyBinding();
         clientKeyBinding.register();
+
+        ClientCommandHandler.instance.registerCommand(new URLCommand());
     }
 
     @Mod.EventHandler
