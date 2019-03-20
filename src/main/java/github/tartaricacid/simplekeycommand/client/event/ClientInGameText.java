@@ -8,6 +8,8 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = SimpleKeyCommand.MOD_ID)
 public class ClientInGameText {
     @SubscribeEvent
+    @SideOnly(Side.CLIENT)
     public static void inGameEvent(RenderGameOverlayEvent event) {
         if (event.getType() == RenderGameOverlayEvent.ElementType.HOTBAR) {
             FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;

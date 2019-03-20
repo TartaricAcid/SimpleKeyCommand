@@ -62,3 +62,7 @@ jar {
         attributes 'FMLAT': 'simplekeycommand_at.cfg'
     }
 }
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
